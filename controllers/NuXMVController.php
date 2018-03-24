@@ -35,6 +35,15 @@ class NuXMVController extends Controller{
     {
         $result = "";
         $file = fopen("nuXmv.txt", "r");
+        while (!feof($file))
+        {
+            $line = fgets($file);
+            
+            if(strpos($line, '-- specification') !== false){
+                $result .= $line;
+            }
+        }
+        fclose($file);
         return $result;
     }
 }

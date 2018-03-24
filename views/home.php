@@ -630,6 +630,7 @@ function check()
             }else{
                 document.getElementById("check_result").style.backgroundColor = '#ffad99';
             }*/
+            alert(result);
         });
 }
 
