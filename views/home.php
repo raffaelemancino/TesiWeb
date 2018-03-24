@@ -19,6 +19,10 @@
     }
 }
 
+.temporalresoult .alert .alert-warning {
+    color: black;
+}
+
 #diagram {
     margin: 0;
     border: 0;
@@ -238,6 +242,10 @@
                             (exists finally), <code>AG</code> (forall globally), <code>AX</code>
                             (forall next state), <code>AF</code> (forall finally), <code>E[U]</code>
                             (exists until), <code>A[U]</code> (forall until).</label>
+                        <a id ="btn_check" class="btn btn-success" href="#">Check</a>
+                    </div>
+                    <div class="alert alert-warning" id="check_result">
+                        
                     </div>
                 </form> 
             </div>
@@ -333,7 +341,9 @@ var btn_webvowl = document.getElementById('btn_webvowl');
 var btn_WVOWL = document.getElementById('btn_WVOWL');
 var btn_annotate_activity = document.getElementById('btn_annotate_activity');
 var btn_annotate_resource = document.getElementById('btn_annotate_resource');
+
 var btn_tl = document.getElementById('btn_tl');
+var btn_check = document.getElementById('btn_check');
 
 var logFilename = null;
 var constraintsFilename = null, businessOntology=null;
@@ -353,6 +363,9 @@ if(btn_tl != null)
     btn_tl.onclick = function(){
         $('#tl').toggle('slow');
     }
+
+if(btn_check != null)
+    btn_check.onclick = check;
 
 if( btn_annotate_activity != null )
     btn_annotate_activity.onclick = function(){
@@ -512,7 +525,7 @@ function process(){
                 rtb: (document.getElementById('rtb').value),
                 constraints: constraintsFilename,
                 level_activity: value_activity,
-				level_resource: value_resource
+                level_resource: value_resource
             };
 
     var equals=businessOntology !=logFilename+".business";
@@ -584,7 +597,42 @@ function visualize(){
         }
     } );
 }
-            
+
+function check()
+{
+    var temporal_query = document.getElementById('query').value;
+    //window.alert(temporal_query);
+    var settings = {
+        file : logFilename,
+        query : temporal_query
+    };
+    /*$.ajax({
+        url: 'check/' + temporal_query,
+        type: 'POST',
+        success: function (result)
+        {
+            document.getElementById("check_result").innerHTML = result;
+            if (result == "true")
+            {
+                document.getElementById("check_result").style.backgroundColor = '#b3ff66';
+            }else{
+                document.getElementById("check_result").style.backgroundColor = '#ffad99';
+            }
+        }
+    });*/
+    $.post( 'check/' + temporal_query, settings)
+        .done(function( result )
+        {
+            document.getElementById("check_result").innerHTML = result;
+            /*if (result == "true")
+            {
+                document.getElementById("check_result").style.backgroundColor = '#b3ff66';
+            }else{
+                document.getElementById("check_result").style.backgroundColor = '#ffad99';
+            }*/
+        });
+}
+
 Cnet2AD.init('diagram');
 
 </script>

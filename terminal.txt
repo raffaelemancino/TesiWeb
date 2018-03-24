@@ -1,1 +1,0 @@
-java -jar Cnet2ADweb.jar -json public/uploads/log/phpFC14.mxml -dir bin -o phpFC14 -sigma 0.05 -ff 0.9 -rtb 0.75 -ontology bin/phpFC14.owl -activity 0
