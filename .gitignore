@@ -1,0 +1,15 @@
+/vendor
+/.idea
+Homestead.json
+Homestead.yaml
+.env
+.mxml
+.xml
+.owl
+.smv
+/Cnet2ADweb.jar
+/Cnet2ADweb1.jar
+*.jar
+/lib/.jar
+/lib/*.jar
+/bin/.
