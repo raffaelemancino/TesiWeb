@@ -241,7 +241,8 @@
                             (exists globally), <code>EX</code> (exists next state), <code>EF</code>
                             (exists finally), <code>AG</code> (forall globally), <code>AX</code>
                             (forall next state), <code>AF</code> (forall finally), <code>E[U]</code>
-                            (exists until), <code>A[U]</code> (forall until).</label>
+                            (exists until), <code>A[U]</code> (forall until). If you want to insert more LTL
+                            or CTL query you have to separate each one with <code>;</code></label>
                         <a id ="btn_check" class="btn btn-success" href="#">Check</a>
                     </div>
                     <div class="alert alert-warning" id="check_result">
@@ -598,31 +599,23 @@ function visualize(){
     } );
 }
 
+/**
+ * Quando si clicca su check, recupera i parametri e li passa al controller per
+ * eseguire le operazioni successive.
+ */
 function check()
 {
     var temporal_query = document.getElementById('query').value;
-    //window.alert(temporal_query);
     var settings = {
-        file : logFilename,
-        query : temporal_query
+        file : logFilename
     };
-    /*$.ajax({
-        url: 'check/' + temporal_query,
-        type: 'POST',
-        success: function (result)
-        {
-            document.getElementById("check_result").innerHTML = result;
-            if (result == "true")
-            {
-                document.getElementById("check_result").style.backgroundColor = '#b3ff66';
-            }else{
-                document.getElementById("check_result").style.backgroundColor = '#ffad99';
-            }
-        }
-    });*/
     $.post( 'check/' + temporal_query, settings)
         .done(function( result )
         {
+            if (result == null || result == "")
+            {
+                result = "Syntax Error";
+            }
             document.getElementById("check_result").innerHTML = result;
             /*if (result == "true")
             {
@@ -630,7 +623,6 @@ function check()
             }else{
                 document.getElementById("check_result").style.backgroundColor = '#ffad99';
             }*/
-            alert(result);
         });
 }
 
