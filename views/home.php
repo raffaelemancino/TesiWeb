@@ -624,12 +624,6 @@ function check()
                 result = "Syntax Error";
             }
             document.getElementById("check_result").innerHTML = result;
-            /*if (result == "true")
-            {
-                document.getElementById("check_result").style.backgroundColor = '#b3ff66';
-            }else{
-                document.getElementById("check_result").style.backgroundColor = '#ffad99';
-            }*/
         });
 }
 

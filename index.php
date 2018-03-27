@@ -43,7 +43,6 @@ $router->post('/process/$filename', "Cnet2ADController@process");
 // GET ajax per ottenere i dati di visualizzazione
 $router->get('/visualize/$filename', "Cnet2ADController@visualize");
 // POST ajax per avviare check query temporale
-//$router->post('/check/$query', 'Cnet2ADController@check');
 $router->post('/check/$query', 'NuXMVController@check');
 
 if( !$router->dispatch() ){
