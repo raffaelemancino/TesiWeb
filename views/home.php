@@ -228,7 +228,7 @@
                 <form id="tl_form" method="POST" action="#" class="form">
                     <div class="form-group">
                         <h5>Insert your LTL or CTL query</h5>
-                        <input id="query" type="text" class="form-inline form-control" name="query" onke/>
+                        <input id="query" type="text" class="form-inline form-control" name="query"/>
                         <label>Statements <code>LTLSPEC</code> and <code>CTLSPEC</code>
                             can be used to include LTL and CTL formulae respectively into
                             the file.In case of the LTL logic, the temporal operators
