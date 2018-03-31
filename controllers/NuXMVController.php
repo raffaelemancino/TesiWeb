@@ -14,7 +14,7 @@ class NuXMVController extends Controller{
     
     function runConsole()
     {
-        $cmd = "nuXmv.exe nuXmv.smv > nuXMV.txt";
+        $cmd = "nuXmv.exe nuXmv.smv > nuXmv.txt";
         shell_exec($cmd);
     }
     
