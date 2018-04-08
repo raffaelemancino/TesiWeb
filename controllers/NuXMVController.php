@@ -7,6 +7,7 @@ class NuXMVController extends Controller{
     function check($query)
     {
         $filename = "$_POST[file]";
+        $query = str_replace("%20", " ", $query);
         $this->concat($filename, $query);
         $this->runConsole();
         echo $this->getResoult();
@@ -28,7 +29,7 @@ class NuXMVController extends Controller{
             $file = fopen($path2, "a");
             fwrite($file, "\n\n$query");
             fclose($file);
-        }   
+        }
     }
     
     function getResoult()
